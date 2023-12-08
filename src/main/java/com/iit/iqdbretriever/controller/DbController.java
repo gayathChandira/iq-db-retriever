@@ -3,6 +3,7 @@ package com.iit.iqdbretriever.controller;
 
 import com.iit.iqdbretriever.dao.IqStore;
 import com.iit.iqdbretriever.repository.MetricRepository;
+import com.iit.iqdbretriever.service.DbServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1")
 public class DbController {
-@Autowired
     MetricRepository metricRepository;
+    DbServiceImpl dbService;
+    public DbController(MetricRepository metricRepository, DbServiceImpl dbService) {
+        this.metricRepository = metricRepository;
+        this.dbService = dbService;
+    }
 
     @PostMapping("/save") // Replace with the actual endpoint
     public void receiveDataFromDeveloperIq(@RequestBody IqStore iqStore) {
-        metricRepository.save(iqStore);
-
+        dbService.storeInDB(iqStore);
+//        metricRepository.save(iqStore);
     }
 }
