@@ -19,9 +19,8 @@ public class DbController {
         this.dbService = dbService;
     }
 
-    @PostMapping("/save") // Replace with the actual endpoint
+    @PostMapping("/save")
     public void receiveDataFromDeveloperIq(@RequestBody IqStore iqStore) {
         dbService.storeInDB(iqStore);
-//        metricRepository.save(iqStore);
     }
 }

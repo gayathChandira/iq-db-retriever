@@ -5,7 +5,7 @@ metadata:
   name: db-retriever-service
 spec:
   selector:
-    app: my-app
+    app: my-app2
   ports:
     - protocol: TCP
       port: 8080
