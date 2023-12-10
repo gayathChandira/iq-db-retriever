@@ -45,5 +45,5 @@ phases:
       - echo generating ip address
       - IP_ADDRESS=$(kubectl get service db-retriever-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
       - echo "IP_ADDRESS is $IP_ADDRESS"
-      - aws ssm put-parameter --name "/developeriq/db-retreival-url" --value "$IP_ADDRESS/v" --type "String" --overwrite
+      - aws ssm put-parameter --name "/developeriq/db-retreival-url" --value "$IP_ADDRESS/v1" --type "String" --overwrite
 
