@@ -1,6 +1,7 @@
 package com.iit.iqdbretriever.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.iit.iqdbretriever.dao.IqStore;
 import com.iit.iqdbretriever.repository.MetricRepository;
 import com.iit.iqdbretriever.service.DbServiceImpl;
@@ -17,6 +18,11 @@ public class DbController {
     public DbController(MetricRepository metricRepository, DbServiceImpl dbService) {
         this.metricRepository = metricRepository;
         this.dbService = dbService;
+    }
+
+    @GetMapping("/test")
+    public void getAvgCommits()  {
+        System.out.println("================================= this runs");
     }
 
     @PostMapping("/save")
