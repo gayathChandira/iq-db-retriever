@@ -1,0 +1,25 @@
+# Deployment YAML for EKS with ECR
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iq-db-retriever
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app2
+  template:
+    metadata:
+      labels:
+        app: my-app2
+    spec:
+      containers:
+        - name: iq-db-retriever
+          image: public.ecr.aws/v8y8p2w5/db-retriever:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: access_key
+            - name: AWS_SECRET_ACCESS_KEY
+              value: secret_key
